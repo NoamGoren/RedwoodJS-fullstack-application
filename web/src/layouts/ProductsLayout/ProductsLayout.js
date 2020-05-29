@@ -1,12 +1,12 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
-import { useAuth } from '@redwoodjs/auth'
+import {useAuth} from '@redwoodjs/auth'
 
 const ProductsLayout = (props) => {
-  const { logOut } = useAuth()
+  const {logout} = useAuth()
 
   return (
     <div className="rw-scaffold">
-      <button onClick={logOut}>Logout</button>
+      <button onClick={logout}>Logout</button>
       <div className="bg-white font-sans">
         <header className="flex justify-between py-4 px-8">
           <h1 className="text-xl font-semibold">

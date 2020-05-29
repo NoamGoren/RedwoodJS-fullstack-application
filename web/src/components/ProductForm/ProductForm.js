@@ -7,6 +7,16 @@ import {
   Submit,
 } from '@redwoodjs/web'
 
+const CSS = {
+  label: 'block mt-6 text-gray-700 font-semibold',
+  labelError: 'block mt-6 font-semibold text-red-700',
+  input:
+    'block mt-2 w-full p-2 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-gray-500',
+  inputError:
+    'block mt-2 w-full p-2 border border-red-700 text-red-900 rounded focus:outline-none',
+  errorMessage: 'block mt-1 font-semibold uppercase text-xs text-red-700',
+}
+
 const ProductForm = (props) => {
   const onSubmit = (data) => {
     data.price = parseFloat(data.price)
@@ -14,82 +24,77 @@ const ProductForm = (props) => {
   }
 
   return (
-    <div className="rw-form-wrapper">
+    <div className="box-border text-sm -mt-4">
       <Form onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
-          wrapperClassName="rw-form-error-wrapper"
-          titleClassName="rw-form-error-title"
-          listClassName="rw-form-error-list"
+          wrapperClassName="p-4 bg-red-100 text-red-700 border border-red-300 rounded mt-4 mb-4"
+          titleClassName="mt-0 font-semibold"
+          listClassName="mt-2 list-disc list-inside"
         />
 
         <Label
           name="name"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Name
-        </Label>
+          className={CSS.label}
+          errorClassName={CSS.labelError}
+        />
         <TextField
           name="name"
           defaultValue={props.product?.name}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
+          className={CSS.input}
+          errorClassName={CSS.inputError}
           validation={{ required: true }}
         />
-        <FieldError name="name" className="rw-field-error" />
+        <FieldError name="name" className={CSS.errorMessage} />
 
         <Label
           name="price"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Price
-        </Label>
+          className={CSS.label}
+          errorClassName={CSS.labelError}
+        />
         <TextField
           name="price"
           type="number"
           defaultValue={props.product?.price}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
+          className={CSS.input}
+          errorClassName={CSS.inputError}
           validation={{ required: true }}
         />
-        <FieldError name="price" className="rw-field-error" />
+        <FieldError name="price" className={CSS.errorMessage} />
 
         <Label
           name="description"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Description
-        </Label>
+          className={CSS.label}
+          errorClassName={CSS.labelError}
+        />
         <TextField
           name="description"
           defaultValue={props.product?.description}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
+          className={CSS.input}
+          errorClassName={CSS.inputError}
           validation={{ required: true }}
         />
-        <FieldError name="description" className="rw-field-error" />
+        <FieldError name="description" className={CSS.errorMessage} />
 
         <Label
           name="image"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Image
-        </Label>
+          className={CSS.label}
+          errorClassName={CSS.labelError}
+        />
         <TextField
           name="image"
           defaultValue={props.product?.image}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
+          className={CSS.input}
+          errorClassName={CSS.inputError}
           validation={{ required: true }}
         />
-        <FieldError name="image" className="rw-field-error" />
+        <FieldError name="image" className={CSS.errorMessage} />
 
-        <div className="rw-button-group">
-          <Submit disabled={props.loading} className="rw-button rw-button-blue">
+        <div className="mt-8 text-center">
+          <Submit
+            disabled={props.loading}
+            className="bg-blue-600 text-white hover:bg-blue-700 text-xs rounded px-4 py-2 uppercase font-semibold tracking-wide"
+          >
             Save
           </Submit>
         </div>

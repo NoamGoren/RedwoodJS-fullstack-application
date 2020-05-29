@@ -11,20 +11,17 @@ const schemas = importAll('api', 'graphql')
 const services = importAll('api', 'services')
 
 export const handler = (event, context, callback) => {
-  if (
-    process.env.NODE_ENV === 'production' &&
-    context?.clientContext?.user == null
-  ) {
+  if(process.env.NODE_ENV === 'production' && context?.clientContext?.user == null){
     return callback(null, {
       statusCode: 401,
-      body: 'Unauthorized',
+      body: "Unauthorized"
     })
   }
-  return createGraphQLHandler({
+  return (createGraphQLHandler({
     schema: makeMergedSchema({
       schemas,
       services: makeServices({ services }),
     }),
     db,
-  })(event, context, callback)
+  }))(event,context,callback)
 }

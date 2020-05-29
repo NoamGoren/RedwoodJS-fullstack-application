@@ -22,11 +22,11 @@ export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => {
   return (
-    <div className="rw-text-center">
+    <div className="text-center">
       {'No products yet. '}
       <Link
         to={routes.newProduct()}
-        className="rw-link"
+        className="text-blue-500 underline hover:text-blue-700"
       >
         {'Create one?'}
       </Link>

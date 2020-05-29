@@ -25,45 +25,51 @@ const Product = ({ product }) => {
 
   return (
     <>
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Product {product.id} Detail</h2>
+      <div className="bg-white border rounded-lg overflow-hidden">
+        <header className="bg-gray-300 text-gray-700 py-3 px-4">
+          <h2 className="text-sm font-semibold">Product {product.id} Detail</h2>
         </header>
-        <table className="rw-table">
+        <table className="w-full text-sm">
           <tbody>
-            <tr>
-              <th>id</th>
-              <td>{product.id}</td>
-            </tr><tr>
-              <th>name</th>
-              <td>{product.name}</td>
-            </tr><tr>
-              <th>price</th>
-              <td>{product.price}</td>
-            </tr><tr>
-              <th>description</th>
-              <td>{product.description}</td>
-            </tr><tr>
-              <th>image</th>
-              <td>{product.image}</td>
+            <tr className="odd:bg-gray-100 even:bg-white border-t">
+              <td className="font-semibold p-3 text-right md:w-1/5">id</td>
+              <td className="p-3">{product.id}</td>
+            </tr><tr className="odd:bg-gray-100 even:bg-white border-t">
+              <td className="font-semibold p-3 text-right md:w-1/5">name</td>
+              <td className="p-3">{product.name}</td>
+            </tr><tr className="odd:bg-gray-100 even:bg-white border-t">
+              <td className="font-semibold p-3 text-right md:w-1/5">price</td>
+              <td className="p-3">{product.price}</td>
+            </tr><tr className="odd:bg-gray-100 even:bg-white border-t">
+              <td className="font-semibold p-3 text-right md:w-1/5">description</td>
+              <td className="p-3">{product.description}</td>
+            </tr><tr className="odd:bg-gray-100 even:bg-white border-t">
+              <td className="font-semibold p-3 text-right md:w-1/5">image</td>
+              <td className="p-3">{product.image}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <nav className="rw-button-group">
-        <Link
-          to={routes.editProduct({ id: product.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
-        <a
-          href="#"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(product.id)}
-        >
-          Delete
-        </a>
+      <nav className="my-4 mx-2 text-center">
+        <ul>
+          <li className="inline-block ml-2">
+            <Link
+              to={routes.editProduct({ id: product.id })}
+              className="text-xs bg-blue-600 text-white hover:bg-blue-700 rounded px-4 py-2 uppercase font-semibold tracking-wide"
+            >
+              Edit
+            </Link>
+          </li>
+          <li className="inline-block ml-2">
+            <a
+              href="#"
+              className="text-xs bg-red-600 text-white hover:bg-red-700 rounded px-4 py-2 uppercase font-semibold tracking-wide"
+              onClick={() => onDeleteClick(product.id)}
+            >
+              Delete
+            </a>
+          </li>
+        </ul>
       </nav>
     </>
   )
