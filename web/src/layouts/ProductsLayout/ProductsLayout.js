@@ -1,25 +1,32 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes, navigate } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
 
 const ProductsLayout = (props) => {
+  const { logOut } = useAuth()
+
   return (
     <div className="rw-scaffold">
-      <header className="rw-header">
-        <h1 className="rw-heading rw-heading-primary">
+      <button onClick={logOut}>Logout</button>
+      <div className="bg-white font-sans">
+        <header className="flex justify-between py-4 px-8">
+          <h1 className="text-xl font-semibold">
+            <Link
+              to={routes.products()}
+              className="text-gray-700 hover:text-gray-900 hover:underline"
+            >
+              Products
+            </Link>
+          </h1>
           <Link
-            to={routes.products()}
-            className="rw-link"
+            to={routes.newProduct()}
+            className="flex bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-3 py-1 uppercase tracking-wide rounded"
           >
-            Products
+            <div className="text-xl leading-none">+</div>
+            <div className="ml-1 leading-loose">New Product</div>
           </Link>
-        </h1>
-        <Link
-          to={routes.newProduct()}
-          className="rw-button rw-button-green"
-        >
-          <div className="rw-button-icon">+</div> New Product
-        </Link>
-      </header>
-      <main className="rw-main">{props.children}</main>
+        </header>
+        <main className="mx-4 pb-4">{props.children}</main>
+      </div>
     </div>
   )
 }
