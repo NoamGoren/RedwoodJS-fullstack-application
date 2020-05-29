@@ -20,7 +20,7 @@ const HomePage = () => {
       <div className="login">
         <img src="/snipcart_logo.svg" />
         <div>
-          <b>Username: </b> geeks+redwoodjs@snipcart.com
+          <b>Username: </b> noam.goren@gmail.com
         </div>
         <div>
           <b>Password: </b>123
