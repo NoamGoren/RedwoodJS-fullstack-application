@@ -3,10 +3,10 @@ import { navigate, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 
 const HomePage = () => {
-  const { loading, isAuthenticated, logIn } = useAuth()
+  const { loading, authenticated, login } = useAuth()
 
   useEffect(() => {
-    if (!loading && isAuthenticated) {
+    if (!loading && authenticated) {
       navigate(routes.products())
     }
   }, [loading, authenticated])
@@ -16,10 +16,19 @@ const HomePage = () => {
   }
 
   return (
-    <div>
-      <h1>HomePage</h1>
-      <p>Find me in ./web/src/pages/HomePage/HomePage.js</p>
-      <button onClick={logIn}>Login</button>
+    <div className="login__wrapper d-flex align-items-center justify-content-center">
+      <div className="login">
+        <img src="/snipcart_logo.svg" />
+        <div>
+          <b>Username: </b> geeks+redwoodjs@snipcart.com
+        </div>
+        <div>
+          <b>Password: </b>123
+        </div>
+        <div className="btn" onClick={login}>
+          Login
+        </div>
+      </div>
     </div>
   )
 }
